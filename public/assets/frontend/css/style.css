@@ -32,6 +32,105 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.form-control:focus {
+  border-color: rgba(126, 239, 104, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+
+.form-control {
+  backdrop-filter: blur(15px);
+  height: 40px;
+  border: 1px solid #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px #bfffdb inset;
+  margin: 8px 0 20px 0;
+}
+
+.btn-theme {
+  background: #14c871;
+  border: 1px solid #38f79b;
+  color: #fff;
+}
+
+.btn-theme:hover {
+  background: #0bb161;
+  color: #fff;
+}
+
+.btn-theme2 {
+  background: #fb9520;
+  border: 1px solid #ffab4a;
+  color: #fff;
+}
+
+.btn-theme2:hover {
+  background: #fb9520;
+  color: #fff;
+}
+
+.modal-theme {
+  border-radius: 5px;
+  padding: 25px 15px 10px 15px;
+  border: 1px solid #06b35f;
+  box-shadow: 0 0px 30px 0px #cbfbe4;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #08c76b;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fb9520;
+}
+
+.text-theme {
+  color: #14c871;
+}
+
+.text-theme2 {
+  color: #fb9520;
+}
+
+.bg-theme {
+  background: #14c871;
+}
+
+.bg-theme2 {
+  background: #fb9520;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -398,7 +497,7 @@ h6 {
 
 #hero .btn-get-started:hover {
   background: #fb9520;
-  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+  box-shadow: 0 8px 28px rgba(251, 163, 32, 0.45);
 }
 
 #hero .btn-watch-video {
@@ -820,7 +919,7 @@ section {
 
 .portfolio-details .portfolio-info {
   padding: 30px;
-  box-shadow: 0px 0 30px rgba(95, 104, 123, 0.08);
+  box-shadow: 0px 0 30px #009b5830;
 }
 
 .portfolio-details .portfolio-info h3 {

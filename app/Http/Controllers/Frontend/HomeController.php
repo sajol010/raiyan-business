@@ -11,4 +11,8 @@ class HomeController extends Controller
     public function index(){
          return view($this->path . 'index');
     }
+
+    public function taxForm(){
+         return view($this->path . 'tax_form');
+    }
 }
