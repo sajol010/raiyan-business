@@ -27,14 +27,14 @@ class UnionService
     /**
      * @return int
      */
-    public function getUnionId(): int{
+    public function getId(): int{
         return $this->union->id;
     }
 
     /**
      * @return string
      */
-    public function getUnionUuid(): string{
+    public function getUuid(): string{
         return $this->union->uuid;
     }
 

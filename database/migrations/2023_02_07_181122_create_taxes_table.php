@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('building_name');
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->foreignId('union_id')->constrained('unions')->onDelete('cascade');
             $table->string('holding_no');
             $table->string('paying_year');
             $table->string('building_type');

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger("type")->comment("1 for tax, 2 for certificate");
+            $table->foreignId('union_id')->constrained('unions')->onDelete('cascade');
             $table->float("amount");
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->string("gateway_id")->nullable();

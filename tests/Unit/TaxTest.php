@@ -17,11 +17,15 @@ class TaxTest extends TestCase
         $response = $this->post(route('tax.add'), [
             'phone'=>'217623',
             'nid'=>'286536712537',
-            'building_name'=>'test',
-            'holding_no'=>'test',
-            'paying_year'=>Carbon::now(),
-            'building_type'=>'test',
-            'amount'=>100,
+            'taxes'=>[
+                [
+                    'building_name'=>'test',
+                    'holding_no'=>'test',
+                    'paying_year'=>Carbon::now(),
+                    'building_type'=>'test',
+                    'amount'=>100,
+                ]
+            ]
         ]);
 
         $response->assertCreated();

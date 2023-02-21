@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use UnionCouncil;
 
 class Customer extends Model
 {
@@ -27,6 +28,8 @@ class Customer extends Model
         if (isset($request->email)) $customer->email = $request->email;
         if (isset($request->password)) $customer->password = $request->password;
         if (isset($request->otp)) $customer->otp = $request->otp;
+
+        $customer->union_id = UnionCouncil::getId();
 
         if ($customer->save()){
             return ['status'=>true, 'customer'=>$customer];

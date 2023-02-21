@@ -212,7 +212,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'UN' => \App\Facades\UnionFacade::class,
+        'UnionCouncil' => \App\Facades\UnionFacade::class,
     ])->toArray(),
 
 ];

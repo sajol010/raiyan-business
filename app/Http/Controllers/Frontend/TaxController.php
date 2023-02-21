@@ -7,7 +7,7 @@ use App\Models\Customer;
 use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-
+use UnionCouncil;
 class TaxController extends Controller
 {
     private $path = 'frontend.taxes.';
@@ -40,31 +40,25 @@ class TaxController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-           'building_name'=>'required',
-           'holding_no'=>'required',
-           'paying_year'=>'required',
-           'building_type'=>'required',
-           'amount'=>'required',
-        ]);
         $customerUpdate = Customer::add($request);
         if (!$customerUpdate['status']){
             return back()->withErrors($customerUpdate['msg']);
         }
         $customer = $customerUpdate['customer'];
-
-        $tax = new Tax();
-        $tax->building_name = $request->building_name;
-        $tax->customer_id = $customer->id;
-        $tax->holding_no = $request->holding_no;
-        $tax->paying_year = $request->paying_year;
-        $tax->building_type = $request->building_type;
-        $tax->amount = $request->amount;
-        if ($tax->save()){
-            return redirect()->back()->with('msg',__("tax.msg.saved.success"))->setStatusCode(201);
+        foreach ($request->taxes as $taxData){
+            $tax = new Tax();
+            $tax->building_name = $taxData['building_name'];
+            $tax->customer_id = $customer->id;
+            $tax->union_id = UnionCouncil::getId();
+            $tax->holding_no = $taxData['holding_no'];
+            $tax->paying_year = $taxData['paying_year'];
+            $tax->building_type = $taxData['building_type'];
+            $tax->amount = $taxData['amount'];
+            $tax->save();
         }
 
-        return redirect()->back()->withErrors(__("tax.msg.unknown_error"))->setStatusCode(400);
+        return redirect()->back()->with('msg',__("tax.msg.saved.success"))->setStatusCode(201);
+
     }
 
     /**
