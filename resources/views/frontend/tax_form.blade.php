@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <section id="portfolio-details" class="portfolio-details">
+    <section id="tax-form" class="portfolio-details">
         <div class="container">
             <div class="row gy-4 justify-content-center">
                 <div class="col-lg-10">
@@ -53,8 +53,12 @@
                                         <input type="text" name="owner_profession" class="form-control">
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-theme" data-bs-toggle="modal"
-                                    data-bs-target="#myModal">
+                                <button type="button" class="btn btn-theme" id="sslczPayBtn"
+{{--                                        token="if you have any token validation"--}}
+                                        postdata="your javascript arrays or objects which requires in backend"
+                                        order="2193hd38"
+                                        endpoint="{{ url('/pay-via-ajax') }}"> Pay Now
+                                >
                                     পেমেন্ট করুন
                                 </button>
 
@@ -87,3 +91,34 @@
         </div>
     </section>
 @endsection
+
+@push('js_script')
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script>
+        var obj = {};
+        obj.cus_name = "Sajol";
+        obj.cus_phone = "01400213733";
+        obj.cus_email = "sajolmahmud010@gmail.com";
+        obj.cus_addr1 = "noapara, abhaynagor, Jashore";
+        obj.amount = 1200;
+        $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
+
+        (function (window, document) {
+            var loader = function () {
+                var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+                // script.src = "https://seamless-epay.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR LIVE
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR SANDBOX
+                tag.parentNode.insertBefore(script, tag);
+            };
+
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+        })(window, document);
+
+
+    </script>
+
+
+
+@endpush

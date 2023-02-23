@@ -62,7 +62,8 @@
 
   <!-- Template Main js') }} File -->
   <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-
+  <script src="{{ mix('/js/app.js') }}"></script>
+@stack('js_script')
 </body>
 
 </html>
