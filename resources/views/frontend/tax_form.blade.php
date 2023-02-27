@@ -135,9 +135,9 @@
             window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload",
                 loader);
         })(window, document);
-    </script>
 
-    <script>
+
+    //
         $(document).ready(function() {
             // On tax type change
             $('#taxType').change(function() {
@@ -147,5 +147,6 @@
                 $('#taxAmount').val(taxAmount);
             });
         });
+
     </script>
 @endpush
