@@ -14,6 +14,7 @@ class HomeController extends Controller
     }
 
     public function taxForm(){
-         return view($this->path . 'tax_form');
+          $taxTypes = config('tax');
+         return view($this->path . 'tax_form', ['taxTypes' => $taxTypes]);
     }
 }

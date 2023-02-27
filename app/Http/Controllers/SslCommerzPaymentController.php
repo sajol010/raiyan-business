@@ -136,18 +136,18 @@ class SslCommerzPaymentController extends Controller
 
 
         #Before  going to initiate the payment order status need to update as Pending.
-        $update_product = DB::table('orders')
-            ->where('transaction_id', $post_data['tran_id'])
-            ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
-                'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
-                'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
-            ]);
+        // $update_product = DB::table('orders')
+        //     ->where('transaction_id', $post_data['tran_id'])
+        //     ->updateOrInsert([
+        //         'name' => $post_data['cus_name'],
+        //         'email' => $post_data['cus_email'],
+        //         'phone' => $post_data['cus_phone'],
+        //         'amount' => $post_data['total_amount'],
+        //         'status' => 'Pending',
+        //         'address' => $post_data['cus_add1'],
+        //         'transaction_id' => $post_data['tran_id'],
+        //         'currency' => $post_data['currency']
+        //     ]);
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )

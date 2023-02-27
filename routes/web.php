@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/pay-tax', [HomeController::class, 'taxForm'])->name('taxForm');
-
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
@@ -47,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
  *
  */
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/pay-tax', [HomeController::class, 'taxForm'])->name('taxForm');
 Route::post('/tax', [TaxController::class, 'store'])->name('tax.add');
 
 
