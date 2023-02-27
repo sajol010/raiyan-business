@@ -23,7 +23,7 @@ class Customer extends Model
         if (isset($request->last_name)) $customer->last_name = $request->last_name;
         if (isset($request->phone)) $customer->phone = $request->phone;
         if (isset($request->nid)) $customer->nid = $request->nid;
-        if (isset($request->nid)) $customer->address_line1 = $request->address_line1;
+        if (isset($request->address_line1)) $customer->address_line1 = $request->address_line1;
         if (isset($request->address_line2)) $customer->address_line2 = $request->address_line2;
         if (isset($request->email)) $customer->email = $request->email;
         if (isset($request->password)) $customer->password = $request->password;

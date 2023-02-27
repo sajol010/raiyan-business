@@ -108,10 +108,13 @@
     </script>
     <script>
         var obj = {};
-        obj.cus_name = "Sajol";
-        obj.cus_phone = "01400213733";
-        obj.cus_email = "sajolmahmud010@gmail.com";
-        obj.cus_addr1 = "noapara, abhaynagor, Jashore";
+        obj.name = "Sajol";
+        obj.phone = "01400213733";
+        obj.email = "sajolmahmud010@gmail.com";
+        obj.nid = "asdhhdasgh";
+        obj.address_line1 = "";
+        obj.product_name = 'tax_'+(obj.nid);
+        obj.product_category = 'tax';
         obj.amount = 1200;
         $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
 
@@ -132,9 +135,9 @@
             window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload",
                 loader);
         })(window, document);
-    </script>
 
-    <script>
+
+    //
         $(document).ready(function() {
             // On tax type change
             $('#taxType').change(function() {
@@ -144,5 +147,6 @@
                 $('#taxAmount').val(taxAmount);
             });
         });
+
     </script>
 @endpush
