@@ -19,9 +19,11 @@
                                         <select name="product_type" id="taxType" class="form-control">
                                             <option value="" selected disabled>নির্বাচন করুন</option>
                                             @foreach ($taxTypes as $category => $taxes)
-                                                <option value="" disabled class="bg-secondary text-white"> {{ $category }} </option>
-                                                @foreach ($taxes as $taxType =>$tax)
-                                                    <option value="{{ $taxType }}" data-amount="{{ $tax }}"> {{ $taxType }} </option>
+                                                <option value="" disabled class="bg-secondary text-white">
+                                                    {{ $category }} </option>
+                                                @foreach ($taxes as $taxType => $tax)
+                                                    <option value="{{ $taxType }}" data-amount="{{ $tax }}">
+                                                        {{ $taxType }} </option>
                                                 @endforeach
                                             @endforeach
                                         </select>
@@ -113,7 +115,7 @@
         obj.email = "sajolmahmud010@gmail.com";
         obj.nid = "asdhhdasgh";
         obj.address_line1 = "";
-        obj.product_name = 'tax_'+(obj.nid);
+        obj.product_name = 'tax_' + (obj.nid);
         obj.product_category = 'tax';
         obj.amount = 1200;
         $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
@@ -137,16 +139,40 @@
         })(window, document);
 
 
-    //
-        $(document).ready(function() {
-            // On tax type change
-            $('#taxType').change(function() {
-                // Get the selected tax amount
-                var taxAmount = $(this).find(':selected').data('amount');
-                // Set the tax amount input field value
-                $('#taxAmount').val(taxAmount);
-            });
-        });
+        //
+        var numbers = {
+            0 : '০',
+            1 : '১',
+            2 : '২',
+            3 : '৩',
+            4 : '৪',
+            5 : '৫',
+            6 : '৬',
+            7 : '৭',
+            8 : '৮',
+            9 : '৯'
+        };
 
+        function replaceNumbers(input) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+                if (numbers.hasOwnProperty(input[i])) {
+                    output.push(numbers[input[i]]);
+                } else {
+                    output.push(input[i]);
+                }
+            }
+            return output.join('');
+        }
+
+        // On tax type change
+        $('#taxType').change(function() {
+            // Get the selected tax amount
+            var taxAmount = $(this).find(':selected').data('amount');
+            // Replace Bengali numbers in the tax amount
+            taxAmount = replaceNumbers(taxAmount);
+            // Set the tax amount input field value
+            $('#taxAmount').val(taxAmount);
+        });
     </script>
 @endpush
