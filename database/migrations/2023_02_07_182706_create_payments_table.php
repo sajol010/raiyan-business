@@ -20,7 +20,10 @@ return new class extends Migration
             $table->float("amount");
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->string("gateway_id")->nullable();
+            $table->string("transaction_id")->nullable();
+            $table->string("currency")->nullable();
             $table->json("response")->nullable();
+            $table->unsignedInteger("is_paid")->default(0)->comment("1 for paid, 0 for paid");
             $table->timestamps();
         });
     }

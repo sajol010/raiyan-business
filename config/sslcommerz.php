@@ -17,8 +17,8 @@ return [
 	],
 	'apiDomain' => $apiDomain,
 	'connect_from_localhost' => env("SSLCZ_TESTMODE", false), // For Sandbox, use "true", For Live, use "false"
-	'success_url' => 'payment/success',
-	'failed_url' => 'payment/fail',
-	'cancel_url' => 'payment/cancel',
+	'success_url' => '/payment/success',
+	'failed_url' => '/payment/fail',
+	'cancel_url' => '/payment/cancel',
 	'ipn_url' => '/ipn',
 ];
