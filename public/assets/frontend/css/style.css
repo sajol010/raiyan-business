@@ -1498,3 +1498,81 @@ section {
     text-align-last: center;
   }
 }
+
+/*--------------------------------------------------------------
+# PDF
+--------------------------------------------------------------*/
+
+/* @font-face {
+  font-family: 'SolaimanLipi';
+  src: url(../fonts/SolaimanLipi.woff2);
+} */
+.b_border {
+  border: 20px solid transparent;
+  border-image-source: url(../img/border.png);
+  border-image-slice: 10%;
+  border-image-repeat: repeat;
+  padding: 15px;
+}
+.b_border{
+  font-family: 'SolaimanLipi';
+}
+.b_border p {
+  margin-bottom: 0;
+}
+.b_border .fz-15 {
+  font-size: 15px;
+}
+.b_border .fz-20 {
+  font-size: 20px;
+}
+.b_border .fz-24 {
+  font-size: 24px;
+}
+/* .b_topBar img {
+  width: 120px;
+} */
+.b_topBottom .b_number1 {
+  font-size: 0;
+}
+.b_topBottom .b_number1 span {
+border: 1.5px solid #888;
+border-left: none;
+padding: 4px;
+font-size: 16px;
+}
+.b_topBottom .b_number1 span:first-child {
+  border-left: 1.5px solid #888;
+}
+.b_topBottom img {
+width: 110px;
+height: 120px;
+object-fit: cover;
+border-radius: 5px;
+}
+
+.b_leftGap > div span:first-child {
+  display: inline-block;
+  width: 200px;
+}
+.b_gapInfo > div {
+  margin-bottom: 8px;
+}
+.b_logoPosition{
+  position: absolute;
+  z-index: -1;
+  width: 400px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  opacity: 0.2;
+}
+.b_topLink {
+  border-top: 2px solid #555;
+  width: 200px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+.b_footerQr img {
+  width: 60px;
+}
