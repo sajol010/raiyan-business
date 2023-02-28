@@ -28,7 +28,7 @@
                 </div>
             </div>
         </section>
-        @endif
+        @else
 
         <section id="featured-services" class="featured-services pb-4">
             <div class="container">
@@ -107,6 +107,7 @@
                 </div>
             </div>
         </section>
+         @endif
         <!-- End Choose Medium Section -->
 
         <!-- The Modal -->
