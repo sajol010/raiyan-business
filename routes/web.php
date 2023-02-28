@@ -56,6 +56,7 @@ Route::get('tax-verified', [TaxController:: class, 'taxVerifiedPage'])->name('ta
 
 //Certificate Start
 Route::get('registration-for-certificate', [CertificateController::class, 'create'])->name('certificate.form');
+Route::post('registration-store', [CertificateController::class, 'store'])->name('certificate.store');
 Route::get('search-certificate' , [CertificateController::class, 'searchCertificate'])->name('certificate.search');
 Route::get('otp-for-certificate-download' , [CertificateController::class, 'getOTP'])->name('certificate.otp');
 //Certificate End

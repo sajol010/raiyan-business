@@ -125,7 +125,7 @@
                         <div class="modal-body featured-services" id="featured-services">
                             <div class="row text-center p-3">
                                 <div class="col-lg-6 col-md-6">
-                                    <a href="{{ route('certificate.form') }}" class="btn-get-started text-white">
+                                    <a href="{{ route('certificate.form') }}?mediumtype=1" class="btn-get-started text-white">
                                         <div class="icon-box choose-certificate">
                                             <div class="icon fw-bold"><i class="bi bi-person"></i></div>
                                             <h2 class="title fs-4">উদ্যোক্তার মাধ্যমে</h2>
@@ -133,7 +133,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
-                                    <a href="{{ route('certificate.form') }}" class="btn-get-started text-white">
+                                    <a href="{{ route('certificate.form') }}?mediumtype=2" class="btn-get-started text-white">
                                         <div class="icon-box choose-certificate">
                                             <div class="icon fw-bold"><i class="bi bi-globe"></i></div>
                                             <h2 class="title fs-4">অনলাইনের মাধ্যমে</h2>
