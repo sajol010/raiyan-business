@@ -22,8 +22,8 @@
 
                     <!-- title  -->
                     <div class="col-6 text-center">
-                        <p class="fz-20">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
-                        <p class="fz-24">৭ নং পলাশপুর ইউনিয়ন পরিষদ</p>
+                        <p class="fz-20">The People's Republic of Bangladesh</p>
+                        <p class="fz-24">7 no. Palashpur Union Parishad</p>
                         {{-- <p>হাজিগঞ্জ, চাঁদপুর - ৩৬১০</p> --}}
                     </div>
 
@@ -31,7 +31,7 @@
                     <div class="col-3">
                         <div class="text-end">
                             <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid bd" width="100px">
-                            <p class="fz-15 pt-3">তারিখঃ ২৫-০৭-২০২২</p>
+                            <p class="fz-15 pt-3">Date: ২৫-০৭-২০২২</p>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         <div>
                             <div class="row">
                                 <div class="col-6 mx-auto">
-                                    <span class="fs-3 fw-bold">নাগরিক সনদ</span>
+                                    <span class="fs-3 fw-bold">Citizenship Certificate</span>
                                 </div>
                             </div>
 
@@ -84,84 +84,84 @@
                     </div>
 
                     <div class="col-12">
-                        <p class="mb-2">এই মর্মে প্রত্যয়ন করা যাইতেছে যে,</p>
+                        <p class="mb-2">This is to certify that,</p>
 
                         <div class="b_leftGap b_gapInfo">
                             <div>
-                                <span>নাম </span>
+                                <span>Name </span>
                                 <span>: ফারুক</span>
                             </div>
 
                             <div>
-                                <span>মাতার নাম </span>
+                                <span>Mother's Name </span>
                                 <span>: মোছাঃ ফাতেমা বেগম</span>
                             </div>
 
                             <div>
-                                <span>পিতা/স্বামীর নাম </span>
+                                <span>Father's/Husband's Name </span>
                                 <span>: মোঃ নুরুজ্জামান আলী</span>
                             </div>
 
                             <div>
-                                <span>ন্যাশনাল আইডি নং </span>
+                                <span>NID No. </span>
                                 <span>: ৫৫৪৯৩৪৯৭৫০</span>
                             </div>
                         </div>
 
-                        <p class="mb-2 mt-3">বর্তমান ঠিকানা</p>
+                        <p class="mb-2 mt-3">Present Address</p>
 
                         <div class="b_leftGap">
                             <div>
                                 <span>
-                                    হোল্ডিং নং: ০২-১১১১
+                                    Holding No: ০২-১১১১
                                 </span>
 
                                 <span>
-                                    গ্রাম: কদমপুর
+                                    Village: কদমপুর
                                 </span>
                             </div>
 
                             <div>
-                                <span>ওয়ার্ড নং: ০২</span>
+                                <span>Ward No: ০২</span>
 
-                                <span>ইউনিয়ন: হাজিগঞ্জ</span>
+                                <span>Union হাজিগঞ্জ</span>
                             </div>
 
                             <div>
-                                <span>উপজেলা: হাজিগঞ্জ</span>
+                                <span>Upazilla: হাজিগঞ্জ</span>
 
-                                <span>জেলা: চাঁদপুর</span>
+                                <span>Zilla: চাঁদপুর</span>
                             </div>
                         </div>
 
-                        <p class="mb-2 mt-3">স্থায়ী ঠিকানা</p>
+                        <p class="mb-2 mt-3">Permanent Address</p>
 
                         <div class="b_leftGap">
                             <div>
                                 <span>
-                                    হোল্ডিং নং: ০২-১১১১
+                                    Holding No: ০২-১১১১
                                 </span>
 
                                 <span>
-                                    গ্রাম: কদমপুর
+                                    Village: কদমপুর
                                 </span>
                             </div>
 
                             <div>
-                                <span>ওয়ার্ড নং: ০২</span>
+                                <span>Ward No: ০২</span>
 
-                                <span>ইউনিয়ন: হাজিগঞ্জ</span>
+                                <span>Union: হাজিগঞ্জ</span>
                             </div>
 
                             <div>
-                                <span>উপজেলা: হাজিগঞ্জ</span>
+                                <span>Upazilla: হাজিগঞ্জ</span>
 
-                                <span>জেলা: চাঁদপুর</span>
+                                <span>Zilla: চাঁদপুর</span>
                             </div>
                         </div>
 
-                        <p class="my-2">তিনি অত্র ইউনিয়নের অন্তগত ০২ নং ওয়ার্ডের স্থায়ী বাসিন্দা, আমার জানামতে মোঃ
-                            ফারুক আহমেদ প্রকাশে ফারুক একই ব্যাক্তি উভয় নামে পরিচিত। আমি তার সর্বাঙ্গীণ মঙ্গোল ও উন্নতি কামনা করি।</p>
+                        <p class="my-2">He is a permanent resident of Ward No. 02 of the union, according to my knowledge
+                            Farooq Ahmed is the same person known by both names. I wish him all the best and prosperity.</p>
                     </div>
                 </div>
 
@@ -171,8 +171,8 @@
                             <img src="{{ asset('assets/frontend/img/signature/7_polashpur.png') }}" alt="" width="20%">
                             <div class="b_topLink"></div>
                             <p></p>
-                            <p>চেয়ারম্যান</p>
-                            <p>৭ নং পলাশপুর ইউনিয়ন পরিষদ</p>
+                            <p>Chairman</p>
+                            <p>7 no. Palashpur Union Parishad</p>
                             {{-- <p>হাজিগঞ্জ, চাঁদপুর</p> --}}
                         </div>
                     </div>
