@@ -28,12 +28,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/application/pending-list', [DashboardController::class, 'pending'])->name('certificate.pending');
     Route::get('/application/approved-list', [DashboardController::class, 'approved'])->name('certificate.approved');
+    Route::get('/application/rejected-list', [DashboardController::class, 'rejected'])->name('certificate.rejected');
 
     // Certificate Start
-    Route::post('/application/view/{id}', [ApplicationController::class, 'view'])->name('application.view');
-    Route::post('/application/approved/{id}', [ApplicationController::class, 'approve'])->name('application.approve');
-    Route::post('/application/reject/{id}', [ApplicationController::class, 'reject'])->name('application.reject');
-    Route::delete('/application/delete/{id}', [ApplicationController::class, 'destroy'])->name('application.destroy');
+    Route::get('/application/view/{id}', [ApplicationController::class, 'view'])->name('application.view');
+    Route::get('/application/approve/{id}', [ApplicationController::class, 'approve'])->name('application.approve');
+    Route::get('/application/reject/{id}', [ApplicationController::class, 'reject'])->name('application.reject');
+    Route::get('/application/delete/{id}', [ApplicationController::class, 'destroy'])->name('application.destroy');
     // Certificate End
 
     // Profile Routes

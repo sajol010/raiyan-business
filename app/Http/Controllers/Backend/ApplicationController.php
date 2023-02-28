@@ -14,4 +14,17 @@ class ApplicationController extends Controller
         $application->save();
         return back();
     }
+
+    public function reject($id){
+        $application = Certificate::find($id);
+        $application->status = 2;
+        $application->save();
+        return back();
+    }
+
+    public function destroy($id){
+        $application = Certificate::find($id);
+        $application->delete();
+        return back();
+    }
 }

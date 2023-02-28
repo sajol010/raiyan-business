@@ -7,7 +7,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Approved Applications</h1>
+                <h1>Rejected Applications</h1>
             </div>
             <div class="container-fluid">
                 <div class="card">
@@ -24,6 +24,7 @@
                                     <th>Permanent Holding No.</th>
                                     <th>Permanent Ward No.</th>
                                     <th>Permanent Village</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,6 +37,10 @@
                                         <td>{{ ($applicant->b_permanent_holding)? $applicant->b_permanent_holding : $applicant->e_permanent_holding }}</td>
                                         <td>{{ ($applicant->b_permanent_ward)? $applicant->b_permanent_ward : $applicant->e_permanent_ward }}</td>
                                         <td>{{ ($applicant->b_permanent_village)? $applicant->b_permanent_village : $applicant->e_permanent_village }}</td>
+                                        <td>
+                                            <a href="{{ route('application.approve', $applicant->id) }}" class="btn btn-sm btn-success" title="Approve"><i class="fas fa-check"></i></a>
+                                            <a href="{{ route('application.destroy', $applicant->id) }}" class="btn btn-sm btn-danger" title="Delete"><i class="fas fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
