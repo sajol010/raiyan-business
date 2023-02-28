@@ -7,36 +7,33 @@
             <a href="{{ url('/') }}">RBD</a>
         </div>
         <ul class="sidebar-menu">
-{{--            if you use this way, laravel is smart enough to find the user has role and the role has this permission or not--}}
-            @can('user.create')
             <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
             </li>
-            @endcan
-            @role('admin')
+            {{-- @role('admin')
             <li class="{{ Request::is('admin/roles*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('roles.index') }}"><i class="fas fa-user-shield"></i> <span>Roles Management</span></a>
             </li>
             <li class="{{ Request::is('admin/users*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-users-cog"></i> <span>Users Management</span></a>
             </li>
-            @endrole
-            <li class="menu-header">Starter</li>
-            <li class="nav-item dropdown {{ Request::is('layout') ? 'active' : '' }}">
+            @endrole --}}
+            {{-- <li class="menu-header">Starter</li> --}}
+            <li class="nav-item dropdown {{ Request::is('application*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
-                    <span>Menu</span></a>
+                    <span>Applications</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('layout-default-layout') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Sub Menu 1</a>
+                    <li class="{{ Request::is('application/pending-list') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('certificate.pending') }}">Pending Applications</a>
                     </li>
-                    <li class="{{ Request::is('transparent-sidebar') ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Sub Menu 2</a>
+                    <li class="{{ Request::is('application/approved-list') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('certificate.approved') }}">Approved Applications</a>
                     </li>
                 </ul>
             </li>
-            <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
+            {{-- <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link" href="#"><i class="fas fa-square"></i> <span>BlankPage</span></a>
-            </li>
+            </li> --}}
         </ul>
 
         <div class="hide-sidebar-mini mt-4 mb-4 p-3">

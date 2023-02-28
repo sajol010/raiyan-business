@@ -59,6 +59,7 @@ return new class extends Migration
             $table->string('e_permanent_zilla')->nullable();
             $table->string('language')->nullable();
             $table->string('medium')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

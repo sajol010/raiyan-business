@@ -25,6 +25,8 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/application/pending-list', [DashboardController::class, 'pending'])->name('certificate.pending');
+    Route::get('/application/approved-list', [DashboardController::class, 'approved'])->name('certificate.approved');
 
     // Profile Routes
     Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
