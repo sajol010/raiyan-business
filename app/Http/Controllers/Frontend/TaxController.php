@@ -8,6 +8,7 @@ use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use UnionCouncil;
+
 class TaxController extends Controller
 {
     private $path = 'frontend.taxes.';
@@ -18,7 +19,7 @@ class TaxController extends Controller
      */
     public function index()
     {
-//
+        //
     }
 
     /**
@@ -28,8 +29,30 @@ class TaxController extends Controller
      */
     public function create()
     {
-        return view($this->path . 'create');
+        $taxTypes = config('tax');
+        return view($this->path . 'create', ['taxTypes' => $taxTypes]);
     }
+
+    /**
+     * Check the status of the sent response.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function taxVerify(Request $request){
+        dd($request);
+        // return redirect($this->path . 'verifiedPage');
+    }
+
+    /**
+     * Redirect to view page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function taxVerifiedPage(){
+        return view($this->path . 'verified');
+    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -41,11 +64,11 @@ class TaxController extends Controller
     public function store(Request $request)
     {
         $customerUpdate = Customer::add($request);
-        if (!$customerUpdate['status']){
+        if (!$customerUpdate['status']) {
             return back()->withErrors($customerUpdate['msg']);
         }
         $customer = $customerUpdate['customer'];
-        foreach ($request->taxes as $taxData){
+        foreach ($request->taxes as $taxData) {
             $tax = new Tax();
             $tax->building_name = $taxData['building_name'];
             $tax->customer_id = $customer->id;
@@ -57,8 +80,7 @@ class TaxController extends Controller
             $tax->save();
         }
 
-        return redirect()->back()->with('msg',__("tax.msg.saved.success"))->setStatusCode(201);
-
+        return redirect()->back()->with('msg', __("tax.msg.saved.success"))->setStatusCode(201);
     }
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\Auth\UsersController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\CertificateController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TaxController;
 use App\Http\Controllers\SslCommerzPaymentController;
@@ -42,13 +43,25 @@ Route::middleware(['auth'])->group(function () {
 /**
  *
  */
+// Landing Page
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/pay-tax', [HomeController::class, 'taxForm'])->name('taxForm');
+
+
+// Tax Start
+Route::get('/pay-tax', [TaxController::class, 'create'])->name('tax.form');
 Route::post('/tax', [TaxController::class, 'store'])->name('tax.add');
+Route::post('verify-tax', [TaxController:: class, 'taxVerify'])->name('tax.verify');
+Route::get('tax-verified', [TaxController:: class, 'taxVerifiedPage'])->name('tax.verifiedPage');
+// Tax End
+
+//Certificate Start
+Route::get('registration', [CertificateController::class, 'create'])->name('certificate.form');
+Route::get('search-certificate' , [CertificateController::class, 'searchCertificate'])->name('certificate.search');
+Route::get('otp-for-certificate-download' , [CertificateController::class, 'getOTP'])->name('certificate.otp');
+//Certificate End
 
 
 // SSLCOMMERZ Start
-
 Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
 Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 

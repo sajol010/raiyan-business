@@ -5,12 +5,17 @@
             <div class="row gy-4 justify-content-center">
                 <div class="col-lg-10">
                     <div class="portfolio-info bg-light">
-                        <h3 class="text-center fs-2">ইউনিয়ন পরিষদ</h3>
+                        <h3 class="text-center fs-2"> ০৭ নং পলাশী ইউনিয়ন পরিষদ</h3>
                         <div>
-                            <form action="">
-                                <div class="row pb-4">
-                                    <div class="col-md-12 text-center text-theme2">
-                                        <h4 class="fw-bold">আপনার ট্যাক্স পরিশোধ করুন</h4>
+                            <form method="POST" action="">
+                                @csrf
+                                <div class="row pb-5">
+                                    <div class="col-md-8 text-theme2">
+                                        <h4 class="fw-bold">&#10065; আপনার ট্যাক্স পরিশোধ করুন</h4>
+                                    </div>
+                                    <div class="col-md-4 text-end">
+                                        <button type="button" class="btn btn-theme" data-bs-toggle="modal"
+                                            data-bs-target="#myModal"> ট্যাক্স পরিশোধিত আছে </button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -70,28 +75,51 @@
                                     endpoint="{{ url('/pay-via-ajax') }}">
                                     পেমেন্ট করুন
                                 </button>
-                                <button type="button" class="btn btn-theme" data-bs-toggle="modal"
-                                    data-bs-target="#myModal"> ট্যাক্স পরিশোধিত আছে </button>
 
                                 <!-- The Modal -->
                                 <div class="modal fade" id="myModal">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content modal-theme">
-                                            <!-- Modal Header -->
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">পেমেন্ট পদ্ধতি নির্বাচন করুন</h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <!-- Modal body -->
-                                            <div class="modal-body">
+                                            <form method="POST" action="{{ route('tax.verify') }}">
+                                                @csrf
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title"> সনদের জন্য নিচের ঘরগুলো পূরণ করুন </h4>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
 
-                                            </div>
-                                            <!-- Modal footer -->
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-theme">পরবর্তী</button>
-                                                <button type="button" class="btn btn-theme2" data-bs-dismiss="modal">বাদ
-                                                    দিন</button>
-                                            </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="" class="ps-1">হোল্ডিং নং</label>
+                                                            <input type="text" name="holding_no" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="" class="ps-1">ওয়ার্ড নং</label>
+                                                            <input type="text" name="ward" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="" class="ps-1">গ্রাম</label>
+                                                            <input type="text" name="village" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="" class="ps-1">জাতীয় পরিচয়পত্র
+                                                                নং</label>
+                                                            <input type="text" name="owner_nid" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-theme">পরবর্তী</button>
+                                                    <button type="button" class="btn btn-theme2"
+                                                        data-bs-dismiss="modal">বাদ
+                                                        দিন</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -139,18 +167,18 @@
         })(window, document);
 
 
-        //
+        // Convert English Numbers to Bangla and load them according the select field choice
         var numbers = {
-            0 : '০',
-            1 : '১',
-            2 : '২',
-            3 : '৩',
-            4 : '৪',
-            5 : '৫',
-            6 : '৬',
-            7 : '৭',
-            8 : '৮',
-            9 : '৯'
+            0: '০',
+            1: '১',
+            2: '২',
+            3: '৩',
+            4: '৪',
+            5: '৫',
+            6: '৬',
+            7: '৭',
+            8: '৮',
+            9: '৯'
         };
 
         function replaceNumbers(input) {

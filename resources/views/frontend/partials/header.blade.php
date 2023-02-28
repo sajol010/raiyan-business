@@ -32,7 +32,7 @@
                     </ul>
                 </li> --}}
                 {{-- <li><a class="nav-link scrollto" href="#contact">যোগাযোগ</a></li> --}}
-                <li><a class="getstarted scrollto" href="#about">সনদ ডাউনলোড</a></li>
+                <li><a class="getstarted scrollto" href="{{ route('certificate.search') }}">সনদ ডাউনলোড</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
