@@ -149,12 +149,11 @@
             var obj = {};
             let formData = $('#taxFormReg').serializeArray();
             formData.forEach(function (data){
-                if(data.name == 'amount')
-                    obj[data.name] = parseFloat(replaceToEnglishNumbers(data.value));
-                else
+                // if(data.name == 'amount')
+                //     obj[data.name] = parseFloat(replaceToEnglishNumbers(data.value));
+                // else
                     obj[data.name] = data.value
             });
-            console.log(obj)
             $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
         }
 
@@ -178,54 +177,54 @@
 
 
         // Convert English Numbers to Bangla and load them according the select field choice
-        var numbers = {
-            0: '০',
-            1: '১',
-            2: '২',
-            3: '৩',
-            4: '৪',
-            5: '৫',
-            6: '৬',
-            7: '৭',
-            8: '৮',
-            9: '৯'
-        };
-        var englishNumbers = {
-            '০': 0,
-            '১': 1,
-            '২': 2,
-            '৩': 3,
-            '৪': 4,
-            '৫': 5,
-            '৬': 6,
-            '৭': 7,
-            '৮': 8,
-            '৯': 9
-        };
+        // var numbers = {
+        //     0: '০',
+        //     1: '১',
+        //     2: '২',
+        //     3: '৩',
+        //     4: '৪',
+        //     5: '৫',
+        //     6: '৬',
+        //     7: '৭',
+        //     8: '৮',
+        //     9: '৯'
+        // };
+        // var englishNumbers = {
+        //     '০': 0,
+        //     '১': 1,
+        //     '২': 2,
+        //     '৩': 3,
+        //     '৪': 4,
+        //     '৫': 5,
+        //     '৬': 6,
+        //     '৭': 7,
+        //     '৮': 8,
+        //     '৯': 9
+        // };
 
-        function replaceToEnglishNumbers(input) {
-            var output = [];
-            for (var i = 0; i < input.length; ++i) {
-                if (englishNumbers.hasOwnProperty(input[i])) {
-                    output.push(englishNumbers[input[i]]);
-                } else {
-                    output.push(input[i]);
-                }
-            }
-            return output.join('');
-        }
+        // function replaceToEnglishNumbers(input) {
+        //     var output = [];
+        //     for (var i = 0; i < input.length; ++i) {
+        //         if (englishNumbers.hasOwnProperty(input[i])) {
+        //             output.push(englishNumbers[input[i]]);
+        //         } else {
+        //             output.push(input[i]);
+        //         }
+        //     }
+        //     return output.join('');
+        // }
 
-        function replaceNumbers(input) {
-            var output = [];
-            for (var i = 0; i < input.length; ++i) {
-                if (numbers.hasOwnProperty(input[i])) {
-                    output.push(numbers[input[i]]);
-                } else {
-                    output.push(input[i]);
-                }
-            }
-            return output.join('');
-        }
+        // function replaceNumbers(input) {
+        //     var output = [];
+        //     for (var i = 0; i < input.length; ++i) {
+        //         if (numbers.hasOwnProperty(input[i])) {
+        //             output.push(numbers[input[i]]);
+        //         } else {
+        //             output.push(input[i]);
+        //         }
+        //     }
+        //     return output.join('');
+        // }
 
         // On tax type change
         $('#taxType').change(function() {
@@ -233,7 +232,7 @@
             var taxAmount = $(this).find(':selected').data('amount');
             // Replace Bengali numbers in the tax amount
             $('#totalTaxAmount').val(taxAmount);
-            taxAmount = replaceNumbers(taxAmount);
+            // taxAmount = replaceNumbers(taxAmount);
             // Set the tax amount input field value
             $('#taxAmount').val(taxAmount);
         });

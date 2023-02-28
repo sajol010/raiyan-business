@@ -15,10 +15,10 @@ class UnionSeeder extends Seeder
     public function run(): void
     {
         $union = new Union();
-        $union->name = "Abhaynagor";
+        $union->name = "৭ নং পলাশপুর";
         $union->uuid = Str::uuid();
-        $union->slug = "abhaynagor";
-        $union->address_line1 = "Abhaynagor";
+        $union->slug = "7-palashpur";
+        $union->address_line1 = "Palashpur";
         $union->district = 'Jashore';
         $union->division = 'Khulna';
         $union->save();

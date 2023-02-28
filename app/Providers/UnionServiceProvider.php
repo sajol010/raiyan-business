@@ -13,7 +13,7 @@ class UnionServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(UnionService::class, function ($app){
-            return new UnionService('abhaynagor');
+            return new UnionService('7-palashpur');
         });
     }
 
