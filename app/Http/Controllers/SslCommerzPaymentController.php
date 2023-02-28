@@ -223,9 +223,14 @@ class SslCommerzPaymentController extends Controller
 
                 $payment->save();
 //                ?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid
-                $url = url('verify-tax').'?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid;
+                if ($payment->type == 1){
+                    $url = url('verify-tax').'?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid;
+                    return redirect($url);
+                }else{
+                    return redirect()->route('certificate.form')->with('success', 'Your request has been submitted! please wait for the approval');
+                }
 
-                return redirect($url);
+
             }
         } else {
             #That means something wrong happened. You can redirect customer to your product page.

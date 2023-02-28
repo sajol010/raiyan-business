@@ -7,7 +7,7 @@
                     <div class="portfolio-info bg-light">
                         <h3 class="text-center fs-2">নাগরিক সনদ</h3>
                         <div>
-                            <form method="POST" action="{{ route('certificate.store') }}">
+                            <form id="certificateForm" method="POST" action="{{ route('certificate.store') }}">
                                 @csrf
                                 <div class="row pb-4">
                                     <div class="col-md-12 text-center text-theme2">
@@ -270,8 +270,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="medium" value="{{ $medium }}">
+                                <input type="hidden" name="medium" value="{{ $medium??2 }}">
+                                <input type="hidden" name="product_category" class="form-control" value="certificate">
+                                <input type="hidden" name="product_name" class="form-control" value="certificate_{{ time()}}">
+                                @if($medium == 1)
                                 <button type="submit" class="btn btn-theme"> সাবমিট করুন </button>
+                                @else
+                                <button type="button" class="btn btn-theme" id="sslczPayBtn" {{-- token="if you have any token validation" --}}
+                                postdata="your javascript arrays or objects which requires in backend" order="{{ time() }}"
+                                        endpoint="{{ url('/certificate/pay-via-ajax') }}">
+                                    পেমেন্ট করুন
+                                </button>
+                                @endif
                             </form>
                         </div>
                     </div>
@@ -282,4 +292,37 @@
 @endsection
 
 @push('js_script')
+    <script>
+
+        $('#certificateForm input').on("change", function (){
+            var obj = {};
+            let formData = $('#certificateForm').serializeArray();
+            formData.forEach(function (data){
+                // if(data.name == 'amount')
+                //     obj[data.name] = parseFloat(replaceToEnglishNumbers(data.value));
+                // else
+                obj[data.name] = data.value
+            });
+            console.log(obj)
+            $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
+        });
+
+        (function(window, document) {
+            var loader = function() {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
+                @if (!env('SSLCZ_TESTMODE'))
+                    script.src = "https://seamless-epay.sslcommerz.com/embed.min.js?" + Math.random().toString(36)
+                    .substring(7); // USE THIS FOR LIVE
+                @else
+                    script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36)
+                    .substring(7); // USE THIS FOR SANDBOX
+                @endif
+                tag.parentNode.insertBefore(script, tag);
+            };
+
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload",
+                loader);
+        })(window, document);
+    </script>
 @endpush

@@ -233,13 +233,5 @@
         });
 
 
-        @php if (\Session::get('error')){ @endphp
-        Swal.fire({
-            title: 'Error!',
-            text: "{{Session::get('error')}}",
-            icon: 'error',
-            confirmButtonText: 'OK'
-        })
-        @php } @endphp
     </script>
 @endpush
