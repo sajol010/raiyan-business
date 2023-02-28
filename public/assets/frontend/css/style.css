@@ -1576,3 +1576,14 @@ border-radius: 5px;
 .b_footerQr img {
   width: 60px;
 }
+
+
+.nav-tabs .nav-link.active{
+  background: #14c871!important;
+  color: #fff;
+}
+
+.nav-tabs .nav-link{
+  background: #fb9520 !important;
+  color: #fff;
+}
