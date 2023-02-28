@@ -50,7 +50,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 // Tax Start
 Route::get('/pay-tax', [TaxController::class, 'create'])->name('tax.form');
 Route::post('/tax', [TaxController::class, 'store'])->name('tax.add');
-Route::post('verify-tax', [TaxController:: class, 'taxVerify'])->name('tax.verify');
+Route::get('verify-tax', [TaxController:: class, 'taxVerify'])->name('tax.verify');
 Route::get('tax-verified', [TaxController:: class, 'taxVerifiedPage'])->name('tax.verifiedPage');
 // Tax End
 

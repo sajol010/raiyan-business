@@ -72,6 +72,7 @@
                                     <div class="form-group col-md-6" >
                                         <input type="text" name="product_category" class="form-control" value="tax" style="display: none">
                                         <input type="text" name="product_name" class="form-control" value="tax_{{ time()}}" style="display: none">
+                                        <input type="text" name="total_tax" id="totalTaxAmount" class="form-control" value="tax_{{ time()}}" style="display: none">
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-theme" id="sslczPayBtn" {{-- token="if you have any token validation" --}}
@@ -90,7 +91,7 @@
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content modal-theme">
-                        <form method="POST" action="{{ route('tax.verify') }}">
+                        <form method="GET" action="{{ route('tax.verify') }}">
                             @csrf
                             <!-- Modal Header -->
                             <div class="modal-header">
@@ -117,7 +118,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1">জাতীয় পরিচয়পত্র
                                             নং</label>
-                                        <input type="text" name="owner_nid" class="form-control">
+                                        <input type="text" name="nid" class="form-control">
                                     </div>
                                 </div>
 
@@ -231,6 +232,7 @@
             // Get the selected tax amount
             var taxAmount = $(this).find(':selected').data('amount');
             // Replace Bengali numbers in the tax amount
+            $('#totalTaxAmount').val(taxAmount);
             taxAmount = replaceNumbers(taxAmount);
             // Set the tax amount input field value
             $('#taxAmount').val(taxAmount);

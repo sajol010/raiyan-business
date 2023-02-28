@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Payment;
 use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -39,7 +40,26 @@ class TaxController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function taxVerify(Request $request){
-        return view($this->path . 'verified');
+        $holdingNo = $request->holding_no;
+        $ward= $request->ward;
+        $village = $request->village;
+        $nid = $request->nid;
+
+        if (Tax::where(['holding_no'=>$holdingNo, 'ward_no'=>$ward, 'village'=>$village])->exists()) {
+            $tax = Tax::where(['holding_no'=>$holdingNo, 'ward_no'=>$ward, 'village'=>$village])->first();
+            $totalPaid = Payment::where(['content_id'=>$tax->id, 'type'=>1, 'is_paid'=>true])->sum('amount');
+            $totalTax = Tax::where(['holding_no'=>$holdingNo, 'ward_no'=>$ward, 'village'=>$village])->sum('total_tax');
+            $customer = Customer::where(['nid'=>$nid])->first();
+            $data = [
+                'total_paid'=>$totalPaid,
+                'total_tax'=>$totalTax,
+                'customer'=>$customer
+            ];
+            return view($this->path . 'verified', $data);
+        }
+        return back()->with('error', 'no taxes paid for this holding number');
+
+
     }
 
     /**

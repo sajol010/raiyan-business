@@ -10,6 +10,7 @@
             </div>
         </div>
 
+        @if($total_paid < $total_tax)
         <section id="featured-services" class="featured-services pb-4">
             <div class="container">
                 <div class="text-center text-theme2 py-4">
@@ -27,7 +28,8 @@
                 </div>
             </div>
         </section>
-        
+        @endif
+
         <section id="featured-services" class="featured-services pb-4">
             <div class="container">
                 <div class="text-center text-theme2 py-4">

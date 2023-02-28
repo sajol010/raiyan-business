@@ -155,7 +155,8 @@ class SslCommerzPaymentController extends Controller
         $tax->village = $request->village;
         $tax->paying_year = $request->paying_year;
         $tax->product_type = $request->product_type;
-        $tax->amount = $request->amount;
+        $tax->payment_amount = $request->amount;
+        $tax->total_tax = $request->total_tax;
         $tax->save();
 
 

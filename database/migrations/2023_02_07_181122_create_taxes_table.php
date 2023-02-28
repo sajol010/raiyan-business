@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('village')->nullable();
             $table->string('paying_year');
             $table->string('product_type');
-            $table->string('amount');
+            $table->string('payment_amount');
+            $table->string('total_tax');
             $table->timestamps();
         });
     }
