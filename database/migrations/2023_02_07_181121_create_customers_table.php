@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string("nid")->unique();
             $table->string("address_line1")->nullable();
             $table->string("address_line2")->nullable();
-            $table->string("email")->nullable()->unique();
+            $table->string("profession")->nullable();
+            $table->string("email")->nullable();
             $table->string("password")->nullable();
             $table->string("otp")->nullable();
             $table->dateTime("deleted_at")->nullable();

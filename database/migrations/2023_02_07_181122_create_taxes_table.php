@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('taxes', function (Blueprint $table) {
             $table->id();
-            $table->string('building_name');
+            $table->string('product_name');
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->foreignId('union_id')->constrained('unions')->onDelete('cascade');
-            $table->string('holding_no');
+            $table->string('holding_no')->nullable();
+            $table->string('ward_no')->nullable();
+            $table->string('village')->nullable();
             $table->string('paying_year');
-            $table->string('building_type');
+            $table->string('product_type');
             $table->string('amount');
             $table->timestamps();
         });

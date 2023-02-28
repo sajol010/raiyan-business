@@ -7,7 +7,7 @@
                     <div class="portfolio-info bg-light">
                         <h3 class="text-center fs-2"> ০৭ নং পলাশী ইউনিয়ন পরিষদ</h3>
                         <div>
-                            <form method="POST" action="">
+                            <form id="taxFormReg" method="POST" action="">
                                 @csrf
                                 <div class="row pb-5">
                                     <div class="col-md-8 text-theme2">
@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1">সম্পদের ধরণ</label>
-                                        <select name="product_type" id="taxType" class="form-control">
+                                        <select name="product_type" id="taxType" class="form-control" onchange="changed()">
                                             <option value="" selected disabled>নির্বাচন করুন</option>
                                             @foreach ($taxTypes as $category => $taxes)
                                                 <option value="" disabled class="bg-secondary text-white">
@@ -35,12 +35,73 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1">পরিশোধযোগ্য ট্যাক্সের পরিমাণ</label>
-                                        <input type="text" name="tax_amount" id="taxAmount" class="form-control">
+                                        <input type="text" name="amount" id="taxAmount" class="form-control" onkeyup="changed()">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1">অর্থবছর</label>
-                                        <input type="text" name="economic_year" class="form-control">
+                                        <input type="text" name="paying_year" class="form-control" onkeyup="changed()">
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">হোল্ডিং নং</label>
+                                        <input type="text" name="holding_no" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">ওয়ার্ড নং</label>
+                                        <input type="text" name="ward_no" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">গ্রাম</label>
+                                        <input type="text" name="village" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">মালিকের নাম</label>
+                                        <input type="text" name="name" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">মালিকের মোবাইল নং</label>
+                                        <input type="text" name="phone" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">মালিকের জাতীয় পরিচয়পত্র নং</label>
+                                        <input type="text" name="nid" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="ps-1">মালিকের পেশা</label>
+                                        <input type="text" name="profession" class="form-control" onkeyup="changed()">
+                                    </div>
+                                    <div class="form-group col-md-6" >
+                                        <input type="text" name="product_category" class="form-control" value="tax" style="display: none">
+                                        <input type="text" name="product_name" class="form-control" value="tax_{{ time()}}" style="display: none">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-theme" id="sslczPayBtn" {{-- token="if you have any token validation" --}}
+                                    postdata="your javascript arrays or objects which requires in backend" order="{{ time() }}"
+                                    endpoint="{{ url('/pay-via-ajax') }}">
+                                    পেমেন্ট করুন
+                                </button>
+
+                                <!-- The Modal -->
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content modal-theme">
+                        <form method="POST" action="{{ route('tax.verify') }}">
+                            @csrf
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title"> সনদের জন্য নিচের ঘরগুলো পূরণ করুন </h4>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="modal"></button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+
+                                <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1">হোল্ডিং নং</label>
                                         <input type="text" name="holding_no" class="form-control">
@@ -54,75 +115,21 @@
                                         <input type="text" name="village" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="" class="ps-1">মালিকের নাম</label>
-                                        <input type="text" name="owner" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="" class="ps-1">মালিকের মোবাইল নং</label>
-                                        <input type="text" name="owner_phone" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="" class="ps-1">মালিকের জাতীয় পরিচয়পত্র নং</label>
+                                        <label for="" class="ps-1">জাতীয় পরিচয়পত্র
+                                            নং</label>
                                         <input type="text" name="owner_nid" class="form-control">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="" class="ps-1">মালিকের পেশা</label>
-                                        <input type="text" name="owner_profession" class="form-control">
-                                    </div>
                                 </div>
-                                <button type="button" class="btn btn-theme" id="sslczPayBtn" {{-- token="if you have any token validation" --}}
-                                    postdata="your javascript arrays or objects which requires in backend" order="2193hd38"
-                                    endpoint="{{ url('/pay-via-ajax') }}">
-                                    পেমেন্ট করুন
-                                </button>
-                            </form>
-                        </div>
 
-                        <!-- The Modal -->
-                        <div class="modal fade" id="myModal">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content modal-theme">
-                                    <form method="POST" action="{{ route('tax.verify') }}">
-                                        @csrf
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title"> সনদের জন্য নিচের ঘরগুলো পূরণ করুন </h4>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-
-                                            <div class="row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="" class="ps-1">হোল্ডিং নং</label>
-                                                    <input type="text" name="holding_no" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="" class="ps-1">ওয়ার্ড নং</label>
-                                                    <input type="text" name="ward" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="" class="ps-1">গ্রাম</label>
-                                                    <input type="text" name="village" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="" class="ps-1">জাতীয় পরিচয়পত্র
-                                                        নং</label>
-                                                    <input type="text" name="owner_nid" class="form-control">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-theme">পরবর্তী</button>
-                                            <button type="button" class="btn btn-theme2" data-bs-dismiss="modal">বাদ
-                                                দিন</button>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
-                        </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-theme">পরবর্তী</button>
+                                <button type="button" class="btn btn-theme2"
+                                        data-bs-dismiss="modal">বাদ
+                                    দিন</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -131,20 +138,24 @@
 @endsection
 
 @push('js_script')
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script>
-        var obj = {};
-        obj.name = "Sajol";
-        obj.phone = "01400213733";
-        obj.email = "sajolmahmud010@gmail.com";
-        obj.nid = "asdhhdasgh";
-        obj.address_line1 = "";
-        obj.product_name = 'tax_' + (obj.nid);
-        obj.product_category = 'tax';
-        obj.amount = 1200;
-        $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
+        function changed(){
+            var obj = {};
+            let formData = $('#taxFormReg').serializeArray();
+            formData.forEach(function (data){
+                if(data.name == 'amount')
+                    obj[data.name] = parseFloat(replaceToEnglishNumbers(data.value));
+                else
+                    obj[data.name] = data.value
+            });
+            console.log(obj)
+            $('#sslczPayBtn').prop('postdata', JSON.stringify(obj));
+        }
 
         (function(window, document) {
             var loader = function() {
@@ -178,6 +189,30 @@
             8: '৮',
             9: '৯'
         };
+        var englishNumbers = {
+            '০': 0,
+            '১': 1,
+            '২': 2,
+            '৩': 3,
+            '৪': 4,
+            '৫': 5,
+            '৬': 6,
+            '৭': 7,
+            '৮': 8,
+            '৯': 9
+        };
+
+        function replaceToEnglishNumbers(input) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+                if (englishNumbers.hasOwnProperty(input[i])) {
+                    output.push(englishNumbers[input[i]]);
+                } else {
+                    output.push(input[i]);
+                }
+            }
+            return output.join('');
+        }
 
         function replaceNumbers(input) {
             var output = [];

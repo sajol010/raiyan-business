@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float("amount");
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->string("gateway_id")->nullable();
+            $table->string("content_id")->comment("tax id or certificate id");
             $table->string("transaction_id")->nullable();
             $table->string("currency")->nullable();
             $table->json("response")->nullable();
