@@ -35,7 +35,8 @@
                 </div>
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-3 col-md-3">
-                        <a href="" class="btn-get-started text-white">
+                        <a href="{{ route('certificate.form') }}" class="btn-get-started text-white"  data-bs-toggle="modal"
+                        data-bs-target="#myModal">
                             <div class="icon-box choose-certificate">
                                 <div class="icon"><i class="bi bi-file-text"></i></div>
                                 <h2 class="title fs-4">নাগরিক সনদ</h2>
@@ -105,5 +106,48 @@
             </div>
         </section>
         <!-- End Choose Medium Section -->
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-theme">
+                    <form method="POST" action="{{ route('tax.verify') }}">
+                        @csrf
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            {{-- <h4 class="modal-title"> সনদের জন্য নিচের ঘরগুলো পূরণ করুন </h4> --}}
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body featured-services" id="featured-services">
+                            <div class="row text-center p-3">
+                                <div class="col-lg-6 col-md-6">
+                                    <a href="{{ route('certificate.form') }}" class="btn-get-started text-white">
+                                        <div class="icon-box choose-certificate">
+                                            <div class="icon fw-bold"><i class="bi bi-person"></i></div>
+                                            <h2 class="title fs-4">উদ্যোক্তার মাধ্যমে</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <a href="{{ route('certificate.form') }}" class="btn-get-started text-white">
+                                        <div class="icon-box choose-certificate">
+                                            <div class="icon fw-bold"><i class="bi bi-globe"></i></div>
+                                            <h2 class="title fs-4">অনলাইনের মাধ্যমে</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            {{-- <button type="submit" class="btn btn-theme">পরবর্তী</button>
+                            <button type="button" class="btn btn-theme2" data-bs-dismiss="modal">বাদ
+                                দিন</button> --}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
