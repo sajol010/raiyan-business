@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certificate;
 use App\Models\Customer;
 use App\Models\Payment;
 use App\Models\Tax;
+use App\Services\SmsService;
 use DB;
 use UnionCouncil;
 use Illuminate\Http\Request;
@@ -222,6 +224,7 @@ class SslCommerzPaymentController extends Controller
                 $payment->is_paid = 1;
 
                 $payment->save();
+                $this->sendSms($payment);
 //                ?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid
                 if ($payment->type == 1){
                     $url = url('verify-tax').'?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid;
@@ -238,6 +241,21 @@ class SslCommerzPaymentController extends Controller
         }
 
 
+    }
+
+    public function sendSms($payment){
+        if (empty($payment)){
+            return;
+        }
+        $mobileNumber = env('ADMIN_MOBILE');
+        $sms = new SmsService();
+        if ($payment->type == 1){
+            $sms->setTemplate("A new tax has been submitted");
+        }else{
+            $sms->setTemplate("A certificate has been registered");
+        }
+
+        $sms->sendSms($mobileNumber);
     }
 
     public function fail(Request $request)

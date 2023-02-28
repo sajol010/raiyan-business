@@ -35,8 +35,8 @@ class CertificateController extends Controller
         # Lets your oder trnsaction informations are saving in a table called "orders"
         # In orders table order uniq identity is "transaction_id","status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
         $cartJson = json_decode(json_decode($request->cart_json, true), true);
-       $request = new Request($cartJson);
-        $certifcate = Certificate::create($request);
+        $request = new Request($cartJson);
+        $certifcate = Certificate::create($request->all());
         $cartJson['email'] = "blackheartboy010@gmail.com";
 
         $post_data = array();

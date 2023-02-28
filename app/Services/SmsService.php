@@ -10,9 +10,9 @@ class SmsService
     private $baseUrl;
     private $apiKey;
     private $senderID;
-    private $otp;
+    private $otp = '';
     private $message;
-    public function __construct($apiKey, $senderID){
+    public function __construct(){
         $this->baseUrl = config('sms.baseUrl');
         $this->apiKey = config('sms.apiKey');
         $this->senderID = config('sms.senderID');
