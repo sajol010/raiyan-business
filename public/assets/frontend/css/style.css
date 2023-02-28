@@ -712,6 +712,11 @@ section {
   padding: 10px !important;
 }
 
+.form-check-input:checked {
+  background-color: #fb9520;
+  border-color: #fb9520;
+}
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/

@@ -39,8 +39,7 @@ class TaxController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function taxVerify(Request $request){
-        dd($request);
-        // return redirect($this->path . 'verifiedPage');
+        return view($this->path . 'verified');
     }
 
     /**

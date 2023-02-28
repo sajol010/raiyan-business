@@ -98,6 +98,26 @@
                                         <label for="" class="ps-1"> জেলা </label>
                                         <input type="text" name="" id="" class="form-control">
                                     </div>
+                                    <div class="form-group col-md-6 pb-3">
+                                        <label for="" class="ps-1"> সনদের ভাষা </label>
+                                        <div class="ps-1 pt-1">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio1" value="option1" checked>
+                                                <label class="form-check-label" for="inlineRadio1">বাংলা</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">ইংলিশ</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">উভয়ই</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-theme"> সাবমিট করুন </button>
                             </form>
@@ -110,5 +130,4 @@
 @endsection
 
 @push('js_script')
-    
 @endpush

@@ -75,55 +75,53 @@
                                     endpoint="{{ url('/pay-via-ajax') }}">
                                     পেমেন্ট করুন
                                 </button>
-
-                                <!-- The Modal -->
-                                <div class="modal fade" id="myModal">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content modal-theme">
-                                            <form method="POST" action="{{ route('tax.verify') }}">
-                                                @csrf
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title"> সনদের জন্য নিচের ঘরগুলো পূরণ করুন </h4>
-                                                    <button type="button" class="btn-close"
-                                                        data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="" class="ps-1">হোল্ডিং নং</label>
-                                                            <input type="text" name="holding_no" class="form-control">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="" class="ps-1">ওয়ার্ড নং</label>
-                                                            <input type="text" name="ward" class="form-control">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="" class="ps-1">গ্রাম</label>
-                                                            <input type="text" name="village" class="form-control">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="" class="ps-1">জাতীয় পরিচয়পত্র
-                                                                নং</label>
-                                                            <input type="text" name="owner_nid" class="form-control">
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-theme">পরবর্তী</button>
-                                                    <button type="button" class="btn btn-theme2"
-                                                        data-bs-dismiss="modal">বাদ
-                                                        দিন</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
+                        </div>
+
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content modal-theme">
+                                    <form method="POST" action="{{ route('tax.verify') }}">
+                                        @csrf
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title"> সনদের জন্য নিচের ঘরগুলো পূরণ করুন </h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="" class="ps-1">হোল্ডিং নং</label>
+                                                    <input type="text" name="holding_no" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="" class="ps-1">ওয়ার্ড নং</label>
+                                                    <input type="text" name="ward" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="" class="ps-1">গ্রাম</label>
+                                                    <input type="text" name="village" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="" class="ps-1">জাতীয় পরিচয়পত্র
+                                                        নং</label>
+                                                    <input type="text" name="owner_nid" class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-theme">পরবর্তী</button>
+                                            <button type="button" class="btn btn-theme2" data-bs-dismiss="modal">বাদ
+                                                দিন</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
