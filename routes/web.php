@@ -71,6 +71,8 @@ Route::post('registration-store', [CertificateController::class, 'store'])->name
 Route::get('search-certificate' , [CertificateController::class, 'searchCertificate'])->name('certificate.search');
 Route::get('otp-for-certificate-download' , [CertificateController::class, 'getOTP'])->name('certificate.otp');
 Route::post('certificate-download' , [CertificateController::class, 'download'])->name('certificate.download');
+
+Route::post('/certificate/pay-via-ajax', [CertificateController::class, 'payViaAjax']);
 //Certificate End
 
 

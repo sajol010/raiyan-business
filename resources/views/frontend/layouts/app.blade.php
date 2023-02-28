@@ -68,6 +68,27 @@
   <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
   <script src="{{ mix('/js/app.js') }}"></script>
 @stack('js_script')
+
+<script>
+
+    @php if (\Session::get('error')){ @endphp
+    Swal.fire({
+        title: 'Error!',
+        text: "{{Session::get('error')}}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+    })
+    @php } @endphp
+
+    @php if (\Session::get('success')){ @endphp
+    Swal.fire({
+        title: 'Success!',
+        text: "{{Session::get('success')}}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+    })
+    @php } @endphp
+</script>
 </body>
 
 </html>
