@@ -36,6 +36,13 @@ class DashboardController extends Controller
 
     public function approved()
     {
-        return view('backend.certificate.approved');
+        $applications = Certificate::where('status', 1)->get();
+        return view('backend.certificate.approved', ['applications' => $applications]);
+    }
+
+    public function rejected()
+    {
+        $applications = Certificate::where('status', 2)->get();
+        return view('backend.certificate.rejected', ['applications' => $applications]);
     }
 }

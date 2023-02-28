@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\Auth\UsersController;
+use App\Http\Controllers\Backend\ApplicationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\CertificateController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -27,6 +28,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/application/pending-list', [DashboardController::class, 'pending'])->name('certificate.pending');
     Route::get('/application/approved-list', [DashboardController::class, 'approved'])->name('certificate.approved');
+    Route::get('/application/rejected-list', [DashboardController::class, 'rejected'])->name('certificate.rejected');
+
+    // Certificate Start
+    Route::get('/application/view/{id}', [ApplicationController::class, 'view'])->name('application.view');
+    Route::get('/application/approve/{id}', [ApplicationController::class, 'approve'])->name('application.approve');
+    Route::get('/application/reject/{id}', [ApplicationController::class, 'reject'])->name('application.reject');
+    Route::get('/application/delete/{id}', [ApplicationController::class, 'destroy'])->name('application.destroy');
+    // Certificate End
 
     // Profile Routes
     Route::get('/profile', [UsersController::class, 'profile'])->name('profile');

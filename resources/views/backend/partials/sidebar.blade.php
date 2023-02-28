@@ -29,6 +29,9 @@
                     <li class="{{ Request::is('application/approved-list') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('certificate.approved') }}">Approved Applications</a>
                     </li>
+                    <li class="{{ Request::is('application/rejected-list') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('certificate.rejected') }}">Rejected Applications</a>
+                    </li>
                 </ul>
             </li>
             {{-- <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
