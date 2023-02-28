@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Payment;
+use App\Models\Tax;
 use DB;
 use UnionCouncil;
 use Illuminate\Http\Request;
@@ -99,6 +100,8 @@ class SslCommerzPaymentController extends Controller
         # Lets your oder trnsaction informations are saving in a table called "orders"
         # In orders table order uniq identity is "transaction_id","status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
         $cartJson = json_decode(json_decode($request->cart_json, true), true);
+
+        $cartJson['email'] = "blackheartboy010@gmail.com";
 //        dd($cartJson);
         $post_data = array();
         $post_data['total_amount'] = $cartJson['amount']; # You cant not pay less than 10
@@ -108,10 +111,10 @@ class SslCommerzPaymentController extends Controller
         $cartJson['first_name'] = $cartJson['name'];
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = $cartJson['name'];
-        $post_data['cus_email'] = $cartJson['email'];
         $post_data['cus_add1'] = $cartJson['address_line1']??'';
         $post_data['cus_country'] = "Bangladesh";
         $post_data['cus_phone'] = $cartJson['phone'];
+        $post_data['cus_email'] = $cartJson['email'];
 
         # SHIPMENT INFORMATION
 //        $post_data['ship_name'] = "Store Test";
@@ -135,6 +138,7 @@ class SslCommerzPaymentController extends Controller
 //        $post_data['value_c'] = "ref003";
 //        $post_data['value_d'] = "ref004";
 
+        unset($cartJson['email']);
         $request = new Request($cartJson);
         $customerUpdate = Customer::add($request);
         if (!$customerUpdate['status']){
@@ -143,12 +147,25 @@ class SslCommerzPaymentController extends Controller
         $customer = $customerUpdate['customer'];
         #Before  going to initiate the payment order status need to update as Pending.
 
+        $tax = new Tax();
+        $tax->product_name = $request->product_name;
+        $tax->customer_id = $customer->id;
+        $tax->union_id = UnionCouncil::getId();
+        $tax->holding_no = $request->holding_no;
+        $tax->village = $request->village;
+        $tax->paying_year = $request->paying_year;
+        $tax->product_type = $request->product_type;
+        $tax->amount = $request->amount;
+        $tax->save();
+
+
         $payment = new Payment();
         $payment->type = !empty($cartJson['product_category']) && $cartJson['product_category'] == 'tax'?1:2;
-        $payment->union_id = UnionCouncil::getId();;
+        $payment->union_id = UnionCouncil::getId();
         $payment->amount = $cartJson['amount'];
         $payment->customer_id = $customer->id;
         $payment->gateway_id = '';
+        $payment->content_id = $tax->id;
         $payment->transaction_id = $post_data['tran_id'];
         $payment->currency = $post_data['currency'];
         $payment->save();

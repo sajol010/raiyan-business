@@ -28,6 +28,7 @@ class Customer extends Model
         if (isset($request->email)) $customer->email = $request->email;
         if (isset($request->password)) $customer->password = $request->password;
         if (isset($request->otp)) $customer->otp = $request->otp;
+        if (isset($request->profession)) $customer->profession = $request->profession;
 
         $customer->union_id = UnionCouncil::getId();
 
