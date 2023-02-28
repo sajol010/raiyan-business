@@ -102,7 +102,7 @@ class SslCommerzPaymentController extends Controller
         $cartJson = json_decode(json_decode($request->cart_json, true), true);
 
         $cartJson['email'] = "blackheartboy010@gmail.com";
-//        dd($cartJson);
+
         $post_data = array();
         $post_data['total_amount'] = $cartJson['amount']; # You cant not pay less than 10
         $post_data['currency'] = env('CURRENCY', "BDT");
@@ -138,31 +138,41 @@ class SslCommerzPaymentController extends Controller
 //        $post_data['value_c'] = "ref003";
 //        $post_data['value_d'] = "ref004";
 
-        unset($cartJson['email']);
-        $request = new Request($cartJson);
-        $customerUpdate = Customer::add($request);
-        if (!$customerUpdate['status']){
-            return back()->withErrors($customerUpdate['msg']);
+        if (empty($cartJson['from'])) {
+            unset($cartJson['email']);
+            $request = new Request($cartJson);
+            $customerUpdate = Customer::add($request);
+            if (!$customerUpdate['status']) {
+                return back()->withErrors($customerUpdate['msg']);
+            }
+            $customer = $customerUpdate['customer'];
+            #Before  going to initiate the payment order status need to update as Pending.
+
+            $tax = new Tax();
+            $tax->product_name = $request->product_name;
+            $tax->customer_id = $customer->id;
+            $tax->union_id = UnionCouncil::getId();
+            $tax->holding_no = $request->holding_no;
+            $tax->ward_no = $request->ward_no;
+            $tax->village = $request->village;
+            $tax->paying_year = $request->paying_year;
+            $tax->product_type = $request->product_type;
+            $tax->payment_amount = $request->amount;
+            $tax->total_tax = $request->total_tax;
+            $tax->save();
+        }else{
+            $tax = Tax::where(['holding_no'=>$cartJson['holding_no'], 'ward_no'=>$cartJson['ward_no'], 'village'=>$cartJson['village']])->first();
+            $customer = Customer::find($tax->customer_id);
         }
-        $customer = $customerUpdate['customer'];
-        #Before  going to initiate the payment order status need to update as Pending.
 
-        $tax = new Tax();
-        $tax->product_name = $request->product_name;
-        $tax->customer_id = $customer->id;
-        $tax->union_id = UnionCouncil::getId();
-        $tax->holding_no = $request->holding_no;
-        $tax->ward_no = $request->ward_no;
-        $tax->village = $request->village;
-        $tax->paying_year = $request->paying_year;
-        $tax->product_type = $request->product_type;
-        $tax->payment_amount = $request->amount;
-        $tax->total_tax = $request->total_tax;
-        $tax->save();
-
+        $post_data['tax_id'] = $tax->id;
+        $post_data['value_a'] = $tax->holding_no;
+        $post_data['value_b'] = $tax->ward_no;
+        $post_data['value_c'] = $tax->village;
+        $post_data['value_d'] = $cartJson['nid'];
 
         $payment = new Payment();
-        $payment->type = !empty($cartJson['product_category']) && $cartJson['product_category'] == 'tax'?1:2;
+        $payment->type = !empty($cartJson['product_category']) && $cartJson['product_category'] == 'tax' ? 1 : 2;
         $payment->union_id = UnionCouncil::getId();
         $payment->amount = $cartJson['amount'];
         $payment->customer_id = $customer->id;
@@ -171,6 +181,8 @@ class SslCommerzPaymentController extends Controller
         $payment->transaction_id = $post_data['tran_id'];
         $payment->currency = $post_data['currency'];
         $payment->save();
+
+        $post_data['tax_id'] = $tax->id;
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
@@ -188,6 +200,10 @@ class SslCommerzPaymentController extends Controller
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
         $currency = $request->input('currency');
+        $holding = $request->input('value_a');
+        $ward = $request->input('value_b');
+        $village = $request->input('value_c');
+        $nid = $request->input('value_d');
 
         $sslc = new SslCommerzNotification();
 
@@ -206,8 +222,10 @@ class SslCommerzPaymentController extends Controller
                 $payment->is_paid = 1;
 
                 $payment->save();
+//                ?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid
+                $url = url('verify-tax').'?holding_no='.$holding.'&ward='.$ward.'&village='.$village.'&nid='.$nid;
 
-                echo "<br >Transaction is successfully Completed";
+                return redirect($url);
             }
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
