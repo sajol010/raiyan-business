@@ -152,6 +152,7 @@ class SslCommerzPaymentController extends Controller
         $tax->customer_id = $customer->id;
         $tax->union_id = UnionCouncil::getId();
         $tax->holding_no = $request->holding_no;
+        $tax->ward_no = $request->ward_no;
         $tax->village = $request->village;
         $tax->paying_year = $request->paying_year;
         $tax->product_type = $request->product_type;
