@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Payment;
 use App\Models\Tax;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use UnionCouncil;
 
 class CertificateController extends Controller
@@ -101,5 +102,14 @@ class CertificateController extends Controller
 
     public function getOTP(){
         return view($this->path. 'otp');
+    }
+
+    public function download(Request $request){
+        $citizen = Certificate::where('b_nid', $request->nid)->orWhere('e_nid', $request->nid)->first();
+        $data = [
+            'citizen' => $citizen
+        ];
+        $pdf = Pdf::loadView('pdf.english.nagorik_sonod', $data);
+        return $pdf->download('certificate.pdf');
     }
 }

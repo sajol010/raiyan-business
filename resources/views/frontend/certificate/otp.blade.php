@@ -7,7 +7,8 @@
                     <div class="portfolio-info bg-light">
                         <h3 class="text-center fs-2">সনদ ডাউনলোড</h3>
                         <div>
-                            <form action="">
+                            <form method="POST" action="{{ route('certificate.download') }}">
+                                @csrf
                                 <div class="row pb-4">
                                     <div class="col-md-12 text-center text-theme2">
                                         <h5 class="fw-bold">আপনার মোবাইলে প্রেরিত ওটিপিটি এখানে বসান </h5>
@@ -15,11 +16,11 @@
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="form-group col-md-6">
-                                        <input type="text" name="" id="" class="form-control" placeholder="ওটিপি">
+                                        <input type="text" name="otp" id="" class="form-control" placeholder="ওটিপি">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-theme"> ডাউনলোড </button>
+                                    <button type="submit" class="btn btn-theme"> ডাউনলোড </button>
                                 </div>
                             </form>
                         </div>
