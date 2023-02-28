@@ -49,11 +49,18 @@ class TaxController extends Controller
             $tax = Tax::where(['holding_no'=>$holdingNo, 'ward_no'=>$ward, 'village'=>$village])->first();
             $totalPaid = Payment::where(['content_id'=>$tax->id, 'type'=>1, 'is_paid'=>true])->sum('amount');
             $totalTax = Tax::where(['holding_no'=>$holdingNo, 'ward_no'=>$ward, 'village'=>$village])->sum('total_tax');
-            $customer = Customer::where(['nid'=>$nid])->first();
+            $requestedCustomer = Customer::where(['nid'=>$nid])->first();
+            $taxPayer =  Customer::where(['id'=>$tax->customer_id])->first();
             $data = [
                 'total_paid'=>$totalPaid,
                 'total_tax'=>$totalTax,
-                'customer'=>$customer
+                'requested_customer'=>$requestedCustomer,
+                'tax_payer'=>$taxPayer,
+                'tax'=>$tax,
+                'holding_no'=>$holdingNo,
+                'ward'=>$ward,
+                'village'=>$village,
+                'nid'=>$nid,
             ];
             return view($this->path . 'verified', $data);
         }
