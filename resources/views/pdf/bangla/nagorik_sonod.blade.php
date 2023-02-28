@@ -17,7 +17,8 @@
                 <div class="row b_topBar">
                     <!-- bongobondhu logo -->
                     <div class="col-3">
-                        <img src="{{ asset('assets/frontend/img/2.png') }}" alt="mujib" class="img-fluid" width="150px">
+                        <img src="{{ asset('assets/frontend/img/2.png') }}" alt="mujib" class="img-fluid"
+                            width="150px">
                     </div>
 
                     <!-- title  -->
@@ -30,7 +31,8 @@
                     <!-- bangladesh logo -->
                     <div class="col-3">
                         <div class="text-end">
-                            <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid bd" width="100px">
+                            <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid bd"
+                                width="100px">
                             <p class="fz-15 pt-3">তারিখঃ ২৫-০৭-২০২২</p>
                         </div>
                     </div>
@@ -89,22 +91,28 @@
                         <div class="b_leftGap b_gapInfo">
                             <div>
                                 <span>নাম </span>
-                                <span>: ফারুক</span>
+                                <span>: {{ $citizen->b_name }}</span>
                             </div>
 
                             <div>
                                 <span>মাতার নাম </span>
-                                <span>: মোছাঃ ফাতেমা বেগম</span>
+                                <span>: {{ $citizen->b_mother }}</span>
                             </div>
 
                             <div>
-                                <span>পিতা/স্বামীর নাম </span>
-                                <span>: মোঃ নুরুজ্জামান আলী</span>
+                                <span>পিতার নাম </span>
+                                <span>: {{ $citizen->b_father }}</span>
                             </div>
+                            @if ($citizen->b_husband != '')
+                                <div>
+                                    <span>স্বামীর নাম </span>
+                                    <span>: {{ $citizen->b_husband }}</span>
+                                </div>
+                            @endif
 
                             <div>
                                 <span>ন্যাশনাল আইডি নং </span>
-                                <span>: ৫৫৪৯৩৪৯৭৫০</span>
+                                <span>: {{ $citizen->b_nid }}</span>
                             </div>
                         </div>
 
@@ -113,24 +121,24 @@
                         <div class="b_leftGap">
                             <div>
                                 <span>
-                                    হোল্ডিং নং: ০২-১১১১
+                                    হোল্ডিং নং: {{ $citizen->b_present_holding }}
                                 </span>
 
                                 <span>
-                                    গ্রাম: কদমপুর
+                                    গ্রাম: {{ $citizen->b_present_village }}
                                 </span>
                             </div>
 
                             <div>
-                                <span>ওয়ার্ড নং: ০২</span>
+                                <span>ওয়ার্ড নং: {{ $citizen->b_present_ward }}</span>
 
-                                <span>ইউনিয়ন: হাজিগঞ্জ</span>
+                                <span>ইউনিয়ন: {{ $citizen->b_present_union }}</span>
                             </div>
 
                             <div>
-                                <span>উপজেলা: হাজিগঞ্জ</span>
+                                <span>উপজেলা: {{ $citizen->b_present_upazilla }}</span>
 
-                                <span>জেলা: চাঁদপুর</span>
+                                <span>জেলা: {{ $citizen->b_present_zilla }}</span>
                             </div>
                         </div>
 
@@ -139,36 +147,37 @@
                         <div class="b_leftGap">
                             <div>
                                 <span>
-                                    হোল্ডিং নং: ০২-১১১১
+                                    হোল্ডিং নং: {{ $citizen->b_permanent_holding }}
                                 </span>
 
                                 <span>
-                                    গ্রাম: কদমপুর
+                                    গ্রাম: {{ $citizen->b_permanent_village }}
                                 </span>
                             </div>
 
                             <div>
-                                <span>ওয়ার্ড নং: ০২</span>
+                                <span>ওয়ার্ড নং: {{ $citizen->b_permanent_ward }}</span>
 
-                                <span>ইউনিয়ন: হাজিগঞ্জ</span>
+                                <span>ইউনিয়ন: {{ $citizen->b_permanent_union }}</span>
                             </div>
 
                             <div>
-                                <span>উপজেলা: হাজিগঞ্জ</span>
+                                <span>উপজেলা: {{ $citizen->b_permanent_upazilla }}</span>
 
-                                <span>জেলা: চাঁদপুর</span>
+                                <span>জেলা: {{ $citizen->b_permanent_zilla }}</span>
                             </div>
                         </div>
 
-                        <p class="my-2">তিনি অত্র ইউনিয়নের অন্তগত ০২ নং ওয়ার্ডের স্থায়ী বাসিন্দা, আমার জানামতে মোঃ
-                            ফারুক আহমেদ প্রকাশে ফারুক একই ব্যাক্তি উভয় নামে পরিচিত। আমি তার সর্বাঙ্গীণ মঙ্গোল ও উন্নতি কামনা করি।</p>
+                        <p class="my-2">তিনি অত্র ইউনিয়নের অন্তর্গত {{ $citizen->b_permanent_ward }} নং ওয়ার্ডের
+                            স্থায়ী বাসিন্দা। আমি তার সর্বাঙ্গীণ মঙ্গোল ও উন্নতি কামনা করি।</p>
                     </div>
                 </div>
 
                 <div class="row pt-5">
                     <div class="col-5 ms-auto">
                         <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/signature/7_polashpur.png') }}" alt="" width="20%">
+                            <img src="{{ asset('assets/frontend/img/signature/7_polashpur.png') }}" alt=""
+                                width="20%">
                             <div class="b_topLink"></div>
                             <p></p>
                             <p>চেয়ারম্যান</p>
@@ -197,4 +206,5 @@
         </div>
     </section>
 </body>
+
 </html>

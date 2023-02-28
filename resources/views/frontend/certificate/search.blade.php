@@ -7,7 +7,8 @@
                     <div class="portfolio-info bg-light">
                         <h3 class="text-center fs-2">সনদ ডাউনলোড</h3>
                         <div>
-                            <form action="{{ route('certificate.otp') }}">
+                            <form method="POST" action="{{ route('certificate.download') }}">
+                                @csrf
                                 <div class="row pb-4">
                                     <div class="col-md-12 text-center text-theme2">
                                         <h5 class="fw-bold">সনদ ডাউনলোডের জন্য আপনার জাতীয় পরিচয়পত্র নং এবং রেজিষ্ট্রেশনের
@@ -18,11 +19,11 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1"> জাতীয় পরিচয়পত্র নং </label>
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="nid" id="" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="" class="ps-1"> মোবাইল নং </label>
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="phone" id="" class="form-control">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-theme"> ওটিপি পাঠান </button>

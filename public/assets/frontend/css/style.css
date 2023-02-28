@@ -1503,10 +1503,10 @@ section {
 # PDF
 --------------------------------------------------------------*/
 
-/* @font-face {
+@font-face {
   font-family: 'SolaimanLipi';
   src: url(../fonts/SolaimanLipi.woff2);
-} */
+}
 .b_border {
   border: 20px solid transparent;
   border-image-source: url(../img/border.png);

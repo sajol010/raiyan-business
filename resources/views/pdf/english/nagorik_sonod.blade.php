@@ -8,6 +8,87 @@
     <title></title>
     <link href="{{ asset('assets/frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
+    <style>
+        .b_border {
+            border: 20px solid transparent;
+            border-image-source: url(../img/border.png);
+            border-image-slice: 10%;
+            border-image-repeat: repeat;
+            padding: 15px;
+        }
+
+        .b_border {
+            font-family: 'SolaimanLipi';
+        }
+
+        .b_border p {
+            margin-bottom: 0;
+        }
+
+        .b_border .fz-15 {
+            font-size: 15px;
+        }
+
+        .b_border .fz-20 {
+            font-size: 20px;
+        }
+
+        .b_border .fz-24 {
+            font-size: 24px;
+        }
+
+        .b_topBottom .b_number1 {
+            font-size: 0;
+        }
+
+        .b_topBottom .b_number1 span {
+            border: 1.5px solid #888;
+            border-left: none;
+            padding: 4px;
+            font-size: 16px;
+        }
+
+        .b_topBottom .b_number1 span:first-child {
+            border-left: 1.5px solid #888;
+        }
+
+        .b_topBottom img {
+            width: 110px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .b_leftGap>div span:first-child {
+            display: inline-block;
+            width: 200px;
+        }
+
+        .b_gapInfo>div {
+            margin-bottom: 8px;
+        }
+
+        .b_logoPosition {
+            position: absolute;
+            z-index: -1;
+            width: 400px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            opacity: 0.2;
+        }
+
+        .b_topLink {
+            border-top: 2px solid #555;
+            width: 200px;
+            margin: 0 auto;
+            padding-bottom: 10px;
+        }
+
+        .b_footerQr img {
+            width: 60px;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +98,8 @@
                 <div class="row b_topBar">
                     <!-- bongobondhu logo -->
                     <div class="col-3">
-                        <img src="{{ asset('assets/frontend/img/2.png') }}" alt="mujib" class="img-fluid" width="150px">
+                        <img src="{{ asset('assets/frontend/img/2.png') }}" alt="mujib" class="img-fluid"
+                            width="150px">
                     </div>
 
                     <!-- title  -->
@@ -30,7 +112,8 @@
                     <!-- bangladesh logo -->
                     <div class="col-3">
                         <div class="text-end">
-                            <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid bd" width="100px">
+                            <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid bd"
+                                width="100px">
                             <p class="fz-15 pt-3">Date: ২৫-০৭-২০২২</p>
                         </div>
                     </div>
@@ -89,22 +172,29 @@
                         <div class="b_leftGap b_gapInfo">
                             <div>
                                 <span>Name </span>
-                                <span>: ফারুক</span>
+                                <span>: {{ $citizen->e_name }}</span>
                             </div>
 
                             <div>
                                 <span>Mother's Name </span>
-                                <span>: মোছাঃ ফাতেমা বেগম</span>
+                                <span>: {{ $citizen->e_mother }}</span>
                             </div>
 
                             <div>
-                                <span>Father's/Husband's Name </span>
-                                <span>: মোঃ নুরুজ্জামান আলী</span>
+                                <span>Father's Name </span>
+                                <span>: {{ $citizen->e_father }}</span>
                             </div>
+
+                            @if ($citizen->b_husband != '')
+                                <div>
+                                    <span>Husband's Name </span>
+                                    <span>: {{ $citizen->e_husband }}</span>
+                                </div>
+                            @endif
 
                             <div>
                                 <span>NID No. </span>
-                                <span>: ৫৫৪৯৩৪৯৭৫০</span>
+                                <span>: {{ $citizen->e_nid }}</span>
                             </div>
                         </div>
 
@@ -113,24 +203,24 @@
                         <div class="b_leftGap">
                             <div>
                                 <span>
-                                    Holding No: ০২-১১১১
+                                    Holding No: {{ $citizen->e_present_holding }}
                                 </span>
 
                                 <span>
-                                    Village: কদমপুর
+                                    Village: {{ $citizen->e_present_village }}
                                 </span>
                             </div>
 
                             <div>
-                                <span>Ward No: ০২</span>
+                                <span>Ward No: {{ $citizen->e_present_ward }}</span>
 
-                                <span>Union হাজিগঞ্জ</span>
+                                <span>Union {{ $citizen->e_present_union }}</span>
                             </div>
 
                             <div>
-                                <span>Upazilla: হাজিগঞ্জ</span>
+                                <span>Upazilla: {{ $citizen->e_present_upazilla }}</span>
 
-                                <span>Zilla: চাঁদপুর</span>
+                                <span>Zilla: {{ $citizen->e_present_zilla }}</span>
                             </div>
                         </div>
 
@@ -139,36 +229,37 @@
                         <div class="b_leftGap">
                             <div>
                                 <span>
-                                    Holding No: ০২-১১১১
+                                    Holding No: {{ $citizen->e_permanent_holding }}
                                 </span>
 
                                 <span>
-                                    Village: কদমপুর
+                                    Village: {{ $citizen->e_permanent_village }}
                                 </span>
                             </div>
 
                             <div>
-                                <span>Ward No: ০২</span>
+                                <span>Ward No: {{ $citizen->e_permanent_ward }}</span>
 
-                                <span>Union: হাজিগঞ্জ</span>
+                                <span>Union {{ $citizen->e_permanent_union }}</span>
                             </div>
 
                             <div>
-                                <span>Upazilla: হাজিগঞ্জ</span>
+                                <span>Upazilla: {{ $citizen->e_permanent_upazilla }}</span>
 
-                                <span>Zilla: চাঁদপুর</span>
+                                <span>Zilla: {{ $citizen->e_permanent_zilla }}</span>
                             </div>
                         </div>
 
-                        <p class="my-2">He is a permanent resident of Ward No. 02 of the union, according to my knowledge
-                            Farooq Ahmed is the same person known by both names. I wish him all the best and prosperity.</p>
+                        <p class="my-2">He is a permanent resident of Ward No. {{ $citizen->e_permanent_ward }} of
+                            the union. I wish him all the best and prosperity.</p>
                     </div>
                 </div>
 
                 <div class="row pt-5">
                     <div class="col-5 ms-auto">
                         <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/signature/7_polashpur.png') }}" alt="" width="20%">
+                            <img src="{{ asset('assets/frontend/img/signature/7_polashpur.png') }}" alt=""
+                                width="20%">
                             <div class="b_topLink"></div>
                             <p></p>
                             <p>Chairman</p>
@@ -197,4 +288,5 @@
         </div>
     </section>
 </body>
+
 </html>
