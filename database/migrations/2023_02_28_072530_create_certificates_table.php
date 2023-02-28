@@ -59,7 +59,8 @@ return new class extends Migration
             $table->string('e_permanent_zilla')->nullable();
             $table->string('language')->nullable();
             $table->string('medium')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0); // 0 = pending, 1 = approved, 2 = rejected
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });
     }

@@ -38,9 +38,9 @@
                                         <td>{{ ($applicant->b_permanent_ward)? $applicant->b_permanent_ward : $applicant->e_permanent_ward }}</td>
                                         <td>{{ ($applicant->b_permanent_village)? $applicant->b_permanent_village : $applicant->e_permanent_village }}</td>
                                         <td>
-                                            {{-- <a href="{{ route('certificate.view', $applicant->id) }}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a> --}}
-                                            {{-- <a href="{{ route('certificate.approve', $applicant->id) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a> --}}
-                                            {{-- <a href="{{ route('certificate.reject', $applicant->id) }}" class="btn btn-sm btn-info"><i class="fas fa-cross"></i></a> --}}
+                                            <a href="{{ route('application.view', $applicant->id) }}" class="btn btn-sm btn-info" title="View"><i class="fas fa-eye"></i></a>
+                                            <a href="{{ route('application.approve', $applicant->id) }}" class="btn btn-sm btn-success" title="Approve"><i class="fas fa-check"></i></a>
+                                            <a href="{{ route('application.reject', $applicant->id) }}" class="btn btn-sm btn-danger" title="Reject"><i class="fas fa-close"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
