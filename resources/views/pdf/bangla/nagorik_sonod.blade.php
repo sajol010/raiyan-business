@@ -17,39 +17,37 @@
                 <div class="row b_topBar">
                     <!-- bongobondhu logo -->
                     <div class="col-3">
-                        <img src="{{ asset('assets/frontend/img/2.png') }}" alt="mujib" class="img-fluid">
+                        <img src="{{ asset('assets/frontend/img/2.png') }}" alt="mujib" class="img-fluid" width="150px">
                     </div>
 
                     <!-- title  -->
                     <div class="col-6 text-center">
                         <p class="fz-20">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
-                        <p class="fz-24">হাজিগঞ্জ সদর ইউনিয়ন পরিষদ</p>
-                        <p>হাজিগঞ্জ, চাঁদপুর - ৩৬১০</p>
-                        <p>hajiganj.upsheba.com</p>
+                        <p class="fz-24">৭ নং পলাশপুর ইউনিয়ন পরিষদ</p>
+                        {{-- <p>হাজিগঞ্জ, চাঁদপুর - ৩৬১০</p> --}}
                     </div>
 
                     <!-- bangladesh logo -->
                     <div class="col-3">
                         <div class="text-end">
-                            <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid">
+                            <img src="{{ asset('assets/frontend/img/1.png') }}" alt="bangladesh" class="img-fluid bd" width="100px">
                             <p class="fz-15 pt-3">তারিখঃ ২৫-০৭-২০২২</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="row align-items-center b_topBottom pt-3">
+                <div class="row align-items-center b_topBottom">
 
                     <!-- prottoyon potro no  -->
                     <div class="col-12 text-center">
                         <div>
                             <div class="row">
-                                {{-- <div class="col-3"></div> --}}
                                 <div class="col-6 mx-auto">
-                                    <span class="fz-24">একই নামের প্রত্যয়নপত্র</span>
+                                    <span class="fs-3 fw-bold">নাগরিক সনদ</span>
                                 </div>
                             </div>
 
-                            <div class="b_number1 pt-3">
+                            {{-- <div class="b_number1 pt-3">
                                 <span>একই নামের প্রত্যয়নপত্র নং.</span>
                                 <span>২</span>
                                 <span>০</span>
@@ -70,7 +68,7 @@
                                 <span>০</span>
                                 <span>০</span>
                                 <span>৪</span>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -110,7 +108,7 @@
                             </div>
                         </div>
 
-                        <p class="mb-2">বর্তমান ঠিকানা</p>
+                        <p class="mb-2 mt-3">বর্তমান ঠিকানা</p>
 
                         <div class="b_leftGap">
                             <div>
@@ -136,7 +134,7 @@
                             </div>
                         </div>
 
-                        <p class="my-2">স্থায়ী ঠিকানা</p>
+                        <p class="mb-2 mt-3">স্থায়ী ঠিকানা</p>
 
                         <div class="b_leftGap">
                             <div>
@@ -168,17 +166,16 @@
                 </div>
 
                 <div class="row pt-5">
-
                     <div class="col-5 ms-auto">
                         <div class="text-center">
+                            <img src="{{ asset('assets/frontend/img/signature/7_polashpur.png') }}" alt="" width="20%">
                             <div class="b_topLink"></div>
                             <p>আলহাজ্ব মোঃ সফিকুল ইসলাম</p>
                             <p>চেয়ারম্যান</p>
-                            <p>হাজিগঞ্জ সদর ইউনিয়ন পরিষদ</p>
-                            <p>হাজিগঞ্জ, চাঁদপুর</p>
+                            <p>৭ নং পলাশপুর ইউনিয়ন পরিষদ</p>
+                            {{-- <p>হাজিগঞ্জ, চাঁদপুর</p> --}}
                         </div>
                     </div>
-
                 </div>
 
                 {{-- <div class="row b_footerQr pt-5">
@@ -198,9 +195,6 @@
                 </div> --}}
             </div>
         </div>
-
     </section>
-
 </body>
-
 </html>

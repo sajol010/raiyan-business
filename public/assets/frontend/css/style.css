@@ -1529,9 +1529,9 @@ section {
 .b_border .fz-24 {
   font-size: 24px;
 }
-.b_topBar img {
+/* .b_topBar img {
   width: 120px;
-}
+} */
 .b_topBottom .b_number1 {
   font-size: 0;
 }

@@ -12,6 +12,5 @@ class HomeController extends Controller
     
     public function index(){
          return view($this->path . 'home');
-        //  return view('pdf.bangla.nagorik_sonod');
     }
 }
