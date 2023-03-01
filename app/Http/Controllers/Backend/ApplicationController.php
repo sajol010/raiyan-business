@@ -12,11 +12,10 @@ class ApplicationController extends Controller
     public function approve($id){
         $application = Certificate::find($id);
         $application->status = 1;
-        $this->sendSms($application);
-        $application->save();
-
-
-
+        
+        if($application->save()){
+            $this->sendSms($application);
+        }
 
         return back();
     }
