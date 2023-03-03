@@ -16,6 +16,10 @@ class CertificateController extends Controller
 {
     private $path = 'frontend.certificate.';
 
+    public function certificateList(){
+        return view($this->path . 'certificate_list');
+    }
+
     public function create(Request $request){
         $medium = $request->mediumtype??2;
         return view($this->path. 'create', ['medium' => $medium]);

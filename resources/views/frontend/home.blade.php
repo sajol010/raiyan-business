@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-4 col-md-6">
-                    <a href="{{ route('tax.form') }}" class="btn-get-started text-white">
+                    <a href="{{ route('certificate.list') }}" class="btn-get-started text-white">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-building"></i></div>
                             <h2 class="title fs-2">ইউনিয়ন পরিষদ</h2>

@@ -62,10 +62,11 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/pay-tax', [TaxController::class, 'create'])->name('tax.form');
 Route::post('/tax', [TaxController::class, 'store'])->name('tax.add');
 Route::get('verify-tax', [TaxController:: class, 'taxVerify'])->name('tax.verify');
-Route::get('tax-verified', [TaxController:: class, 'taxVerifiedPage'])->name('tax.verifiedPage');
+// Route::get('tax-verified', [TaxController:: class, 'taxVerifiedPage'])->name('tax.verifiedPage');
 // Tax End
 
 //Certificate Start
+Route::get('certificates', [CertificateController:: class, 'certificateList'])->name('certificate.list');
 Route::get('registration-for-certificate', [CertificateController::class, 'create'])->name('certificate.form');
 Route::post('registration-store', [CertificateController::class, 'store'])->name('certificate.store');
 Route::get('search-certificate' , [CertificateController::class, 'searchCertificate'])->name('certificate.search');
